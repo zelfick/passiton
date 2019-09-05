@@ -1,0 +1,13 @@
+#create a volume
+docker volume create pgdata
+
+docker run -d --rm -v pgdata:/var/lib/postgresql/data postgres:9.6.1
+
+docker run -d --rm --name postgres1 -v pgdata:/var/lib/postgresql/data postgres:9.6.1
+
+#then stop the container
+docker container stop container_id or name
+
+#then run the new container
+docker run -d --rm --name postgres2 -v pgdata:/var/lib/postgresql/data postgres:9.6.2
+

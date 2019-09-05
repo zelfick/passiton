@@ -1,0 +1,7 @@
+version: '3'
+services:
+  web:
+    build: ./aspnetapp
+    image: appnet-custom  # name the image with this name
+    ports:
+      - "8584:80"

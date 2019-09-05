@@ -1,0 +1,17 @@
+version: '2'
+
+# based off sample2, only we build nginx.conf into image
+# uses sample site from https://startbootstrap.com/template-overviews/agency/
+
+services:
+  proxy:
+    build:
+      context: .
+      dockerfile: nginx.Dockerfile # look for the version locally if not it would build with the dockerfile i configured
+    image: nginx-custom  # name the image with this name
+    ports:
+      - '3334:80'
+  web:
+    image: httpd
+    volumes:
+      - ./html:/usr/local/apache2/htdocs/ #can edit the page in the html local directory and after refresh you can see the change
